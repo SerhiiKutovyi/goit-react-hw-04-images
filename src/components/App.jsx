@@ -40,21 +40,6 @@ export const App = () => {
       });
   }, [search, page]);
 
-  useEffect(() => {
-    window.addEventListener('keydown', eve => {
-      if (eve.code === 'Escape') {
-        setImage('');
-      }
-    });
-    return () => {
-      window.addEventListener('keydown', eve => {
-        if (eve.code === 'Escape') {
-          setImage('');
-        }
-      });
-    };
-  }, []);
-
   const searchBarSubmit = data => {
     setSearch(data);
     setPage(1);
@@ -69,10 +54,8 @@ export const App = () => {
     setImage({ largeImageURL });
   };
 
-  const closeModalImg = eve => {
-    if (eve.currentTarget === eve.target) {
-      setImage('');
-    }
+  const closeModalImg = () => {
+    setImage('');
   };
 
   return (
